@@ -12,6 +12,12 @@ class ProductCategory(models.Model):
         blank=True,
     )
 
+    short_desc = models.CharField(
+        verbose_name='краткое описание',
+        max_length=60,
+        blank=True,
+    )
+
     created = models.DateTimeField(
         auto_now_add=True
     )
@@ -72,8 +78,8 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name} ({self.category.name})"
 
-
 class Meta:
     ordering = ['-updated']
     verbose_name = 'товар'
     verbose_name_plural = 'товары'
+
