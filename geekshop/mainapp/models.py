@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class ProductCategory(models.Model):
     name = models.CharField(
         max_length=64,
@@ -28,6 +29,7 @@ class ProductCategory(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Product(models.Model):
     category = models.ForeignKey(
@@ -78,8 +80,7 @@ class Product(models.Model):
     def __str__(self):
         return f"{self.name} ({self.category.name})"
 
-class Meta:
-    ordering = ['-updated']
-    verbose_name = 'товар'
-    verbose_name_plural = 'товары'
-
+    class Meta:
+        ordering = ['-updated']
+        verbose_name = 'товар'
+        verbose_name_plural = 'товары'
