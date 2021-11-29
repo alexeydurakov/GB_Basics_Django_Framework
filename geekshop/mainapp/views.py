@@ -22,7 +22,6 @@ def products(request, pk=None, page=1):
 
     links_menu = ProductCategory.objects.all()
 
-
     if pk is not None:
         if pk == 0:
             category = {'pk': 0, 'name': 'все'}
@@ -68,14 +67,14 @@ def products(request, pk=None, page=1):
 
 
 def product(request, pk):
-    title = 'Товар'
+    title = 'Детали'
 
     product = get_object_or_404(Product, pk=pk)
 
     context = {
         'title': title,
         'links_menu': ProductCategory.objects.all(),
-        'same_products': get_same_products(product),
         'product': product,
+        'same_products': get_same_products(product),
     }
     return render(request, 'mainapp/product.html', context)
