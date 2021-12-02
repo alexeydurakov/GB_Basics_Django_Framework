@@ -10,7 +10,7 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def basket(request):
-    basket = Basket.objects.filter(user=request.user)
+    basket = Basket.objects.filter(user=request.user).select_related('category')
     context = {
         'basket': basket,
     }
